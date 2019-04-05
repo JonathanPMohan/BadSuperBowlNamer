@@ -4,19 +4,31 @@ using System.Collections.Generic;
 namespace BadSuperBowlNamer
 {
     class Program
-
     {
         static void Main(string[] args)
         {
-           
-        Console.WriteLine("Tired Of Screwing Up Roman Numerals?");
-            Console.WriteLine("Welcome To The Roman Numeral Depot.");
-            Console.WriteLine("Enter A Number To See It Convert Before Your Eyes.");
+            startApp();
+        }
 
+        static void startApp()
+        {
+            Console.Title = "Roman Numerual Uno";
+            Console.BackgroundColor = ConsoleColor.DarkYellow;
+            Console.ForegroundColor = ConsoleColor.Black;
 
-            var numberInput = Console.ReadLine();
+            var convertor = new RomanNumeralConvertor();
 
-            Console.ReadLine();
+            Console.WriteLine("Which Number Would You Like To Convert To Roman Numerals");
+            var input = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine($"Solution: {convertor.ConvertToRoman(input)}");
+            Console.WriteLine("Convert Another Number? (y/n)");
+
+            var answer = Console.ReadLine().ToLower();
+            if (answer != "y")
+            {
+                Environment.Exit(-1);
+            }
+            startApp();
         }
     }
 }
